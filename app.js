@@ -6,9 +6,13 @@ const User = require('./Modals/User');
 const Image = require('./Modals/Image');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-
+const cors = require('cors');
 const app = express();
 app.use(express.json());
+app.use(cors({
+  origin: 'http://localhost:3000', // Replace with your frontend's origin
+  optionsSuccessStatus: 200, // Some legacy browsers (IE11, various SmartTVs) choke on 204
+}));
 const imgUploadMulter = multer();
 
 const MONGODB_URI = "mongodb+srv://pulak338:Admin123@cripttioncluster.lj1nx9o.mongodb.net/?retryWrites=true&w=majority";
